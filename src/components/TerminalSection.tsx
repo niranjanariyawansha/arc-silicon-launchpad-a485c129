@@ -30,7 +30,14 @@ const TerminalSection = () => {
   const isComplete = visibleLines >= logLines.length;
 
   return (
-    <section id="verification" className="py-32 px-6" ref={ref}>
+    <section id="verification" className="relative py-32 px-6 overflow-hidden" ref={ref}>
+      {/* Diagonal green-to-white */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `linear-gradient(170deg, hsl(var(--arc-green) / 0.06) 45%, hsl(var(--background)) 45%)`,
+        }}
+      />
       <div className="max-w-4xl mx-auto">
         <motion.h2
           className="font-display text-3xl md:text-5xl font-extrabold text-center mb-4"

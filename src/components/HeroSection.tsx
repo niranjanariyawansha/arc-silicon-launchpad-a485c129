@@ -10,6 +10,13 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-16 overflow-hidden">
+      {/* Diagonal red-to-white split */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `linear-gradient(155deg, hsl(var(--background)) 50%, hsl(var(--arc-red) / 0.07) 50%)`,
+        }}
+      />
       {/* Subtle gradient orbs */}
       <div className="absolute top-20 left-1/4 w-96 h-96 bg-arc-blue/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-arc-red/10 rounded-full blur-3xl pointer-events-none" />
