@@ -14,9 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Google Sans"', '"SF Pro Display"', 'system-ui', 'sans-serif'],
-        body: ['"Google Sans Text"', '"SF Pro Text"', 'system-ui', 'sans-serif'],
+        display: ['"Inter"', '"SF Pro Display"', 'system-ui', 'sans-serif'],
+        body: ['"Inter"', '"SF Pro Text"', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', '"SF Mono"', 'monospace'],
+        signature: ['"Mrs Saint Delafield"', 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",
