@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { motion } from "framer-motion";
+import { useScrollProgress } from "@/hooks/useScrollProgress";
+import { useIsMobile } from "@/hooks/use-mobile";
+import ScrollHistogram from "./ScrollHistogram";
 
 const logLines = [
   { text: "[🚀] STARTING HYPER-SPEED ASIC SIMULATION (1.0 GHz)", color: "text-arc-blue" },
@@ -13,58 +16,92 @@ const logLines = [
 ];
 
 const TerminalSection = () => {
-  const { ref, isVisible } = useScrollReveal(0.3);
+  const { ref, progress } = useScrollProgress(0.15);
+  const isMobile = useIsMobile();
   const [visibleLines, setVisibleLines] = useState(0);
 
+  // Lines reveal based on scroll progress
   useEffect(() => {
-    if (!isVisible) return;
-    const interval = setInterval(() => {
-      setVisibleLines((prev) => {
-        if (prev >= logLines.length) {
-          clearInterval(interval);
-          return prev;
-        }
-        return prev + 1;
-      });
-    }, 400);
-    return () => clearInterval(interval);
-  }, [isVisible]);
+    const count = Math.floor(progress * logLines.length);
+    setVisibleLines(count);
+  }, [progress]);
+
+  // "Glowing Emerald" once fully revealed
+  const isComplete = visibleLines >= logLines.length;
 
   return (
     <section id="verification" className="py-32 px-6" ref={ref}>
       <div className="max-w-4xl mx-auto">
-        <h2 className="font-display text-3xl md:text-5xl font-extrabold text-center text-foreground mb-4">
-          The Proof
-        </h2>
+        <motion.h2
+          className="font-display text-3xl md:text-5xl font-extrabold text-center mb-4"
+          animate={{
+            color: isComplete ? "hsl(var(--arc-green))" : "hsl(var(--foreground))",
+            textShadow: isComplete
+              ? "0 0 40px hsl(var(--arc-green) / 0.4)"
+              : "none",
+          }}
+          transition={{ type: "spring", stiffness: 80, damping: 12 }}
+        >
+          1.0 GHz Verification
+        </motion.h2>
         <p className="text-center text-muted-foreground mb-12 text-lg">
           Real verification output from our ASIC simulation pipeline.
         </p>
 
-        <div className="rounded-2xl overflow-hidden glass border border-border/60 shadow-2xl">
+        <motion.div
+          className="rounded-2xl overflow-hidden glass border border-border/60 shadow-2xl"
+          initial={isMobile ? {} : { opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 60, damping: 18 }}
+        >
           {/* Terminal header */}
           <div className="flex items-center gap-2 px-5 py-3 border-b border-border/40 bg-muted/40">
             <div className="w-3 h-3 rounded-full bg-arc-red" />
             <div className="w-3 h-3 rounded-full bg-arc-yellow" />
             <div className="w-3 h-3 rounded-full bg-arc-green" />
-            <span className="ml-3 text-xs text-muted-foreground font-mono">arc-silicon-sim — verification.log</span>
+            <span className="ml-3 text-xs text-muted-foreground font-mono">
+              arc-silicon-sim — verification.log
+            </span>
           </div>
 
           {/* Terminal body */}
           <div className="p-6 font-mono text-sm leading-relaxed min-h-[320px] bg-background/50">
             {logLines.slice(0, visibleLines).map((line, i) => (
-              <div
+              <motion.div
                 key={i}
-                className={`${line.color} opacity-0 animate-fade-up`}
-                style={{ animationDelay: `${i * 80}ms`, animationFillMode: "forwards" }}
+                className={line.color}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 120,
+                  damping: 14,
+                  delay: i * 0.05,
+                }}
               >
                 {line.text}
-              </div>
+              </motion.div>
             ))}
-            {visibleLines < logLines.length && isVisible && (
+            {visibleLines < logLines.length && (
               <span className="inline-block w-2 h-4 bg-arc-blue animate-pulse ml-1" />
             )}
           </div>
-        </div>
+        </motion.div>
+
+        {/* Histogram grows with scroll */}
+        <ScrollHistogram />
+
+        {/* Founder's verification callout */}
+        {isComplete && (
+          <motion.p
+            className="text-center mt-8 font-signature text-2xl text-arc-green/70"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ type: "spring", stiffness: 80, damping: 12 }}
+          >
+            "Verified. No compromises."
+          </motion.p>
+        )}
       </div>
     </section>
   );
