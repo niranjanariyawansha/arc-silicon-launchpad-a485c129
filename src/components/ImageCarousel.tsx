@@ -47,7 +47,7 @@ const ImageCarousel = () => {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `linear-gradient(165deg, hsl(var(--arc-blue) / 0.08) 40%, hsl(var(--background)) 40%)`,
+          background: `linear-gradient(165deg, hsl(var(--arc-blue) / 0.18) 40%, hsl(var(--background)) 40%)`,
         }}
       />
 
