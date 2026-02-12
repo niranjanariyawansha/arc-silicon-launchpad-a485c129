@@ -1,32 +1,28 @@
 import { motion } from "framer-motion";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Shield, CircuitBoard, Gauge } from "lucide-react";
+import circuitImg from "@/assets/unsplash-circuit.jpg";
+import serverImg from "@/assets/unsplash-server.jpg";
+import networkImg from "@/assets/unsplash-network.jpg";
 
 const pillars = [
   {
-    icon: Shield,
+    image: circuitImg,
     title: "Deterministic Processing",
     description:
       "Every clock cycle is predictable. Zero jitter, zero surprises — mission-critical reliability for financial and telecom infrastructure.",
-    color: "text-arc-blue",
-    bg: "bg-arc-blue/10",
   },
   {
-    icon: CircuitBoard,
+    image: serverImg,
     title: "Silicon-Proven IP",
     description:
       "Verified at gate-level for TSMC FinFET nodes. Not just simulated — proven in real synthesis flows with timing closure at 1 GHz.",
-    color: "text-arc-red",
-    bg: "bg-arc-red/10",
   },
   {
-    icon: Gauge,
+    image: networkImg,
     title: "10Gbps-Era Ready",
     description:
       "Designed from day one for next-gen network speeds. 8 Gbps sustained throughput today, architected to scale beyond 10 Gbps.",
-    color: "text-arc-green",
-    bg: "bg-arc-green/10",
   },
 ];
 
@@ -41,7 +37,7 @@ const WhyArcSection = () => {
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: `linear-gradient(165deg, hsl(var(--background)) 55%, hsl(var(--arc-yellow) / 0.15) 55%)`,
+            background: `linear-gradient(165deg, hsl(var(--background)) 50%, hsl(var(--arc-yellow) / 0.25) 50%)`,
           }}
         />
       )}
@@ -81,10 +77,13 @@ const WhyArcSection = () => {
                 delay: i * 0.1,
               }}
             >
-              <div
-                className={`w-16 h-16 rounded-2xl ${p.bg} flex items-center justify-center mb-6`}
-              >
-                <p.icon className={`w-8 h-8 ${p.color}`} />
+              <div className="w-full h-40 rounded-2xl overflow-hidden mb-6">
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
               </div>
               <h3 className="font-display text-xl font-bold text-foreground mb-3">{p.title}</h3>
               <p className="text-muted-foreground leading-relaxed">{p.description}</p>

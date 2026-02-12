@@ -35,7 +35,7 @@ const TerminalSection = () => {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `linear-gradient(170deg, hsl(var(--arc-green) / 0.06) 45%, hsl(var(--background)) 45%)`,
+          background: `linear-gradient(170deg, hsl(var(--arc-green) / 0.15) 45%, hsl(var(--background)) 45%)`,
         }}
       />
       <div className="max-w-4xl mx-auto">

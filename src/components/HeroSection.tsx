@@ -10,16 +10,17 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-16 overflow-hidden">
-      {/* Diagonal red-to-white split */}
+      {/* Multi-color diagonal gradient background */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `linear-gradient(155deg, hsl(var(--background)) 50%, hsl(var(--arc-red) / 0.07) 50%)`,
+          background: `linear-gradient(155deg, hsl(var(--background)) 45%, hsl(var(--arc-blue) / 0.12) 45%, hsl(var(--arc-blue) / 0.12) 50%, hsl(var(--arc-red) / 0.10) 50%, hsl(var(--arc-red) / 0.10) 55%, hsl(var(--arc-yellow) / 0.10) 55%, hsl(var(--arc-yellow) / 0.10) 60%, hsl(var(--arc-green) / 0.10) 60%)`,
         }}
       />
-      {/* Subtle gradient orbs */}
-      <div className="absolute top-20 left-1/4 w-96 h-96 bg-arc-blue/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-arc-red/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Gradient orbs */}
+      <div className="absolute top-20 left-1/4 w-96 h-96 bg-arc-blue/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-arc-red/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 right-1/3 w-72 h-72 bg-arc-yellow/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto">
         <motion.img
@@ -30,6 +31,15 @@ const HeroSection = () => {
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           style={{ rotate: rotateSpeed }}
         />
+
+        <motion.h2
+          className="font-display text-2xl md:text-3xl font-bold tracking-wide text-arc-blue mb-2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 60, damping: 18, delay: 0.15 }}
+        >
+          ARC Silicon
+        </motion.h2>
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -85,14 +95,13 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - subtle arrow only */}
       <motion.div
-        className="absolute bottom-8 flex flex-col items-center gap-2 text-muted-foreground"
+        className="absolute bottom-8 flex flex-col items-center gap-2 text-muted-foreground/40"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <span className="text-xs tracking-widest uppercase">Scroll</span>
-        <div className="w-px h-8 bg-border" />
+        <div className="w-5 h-5 border-b-2 border-r-2 border-muted-foreground/30 rotate-45" />
       </motion.div>
     </section>
   );

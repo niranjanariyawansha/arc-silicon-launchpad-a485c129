@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Cpu, Zap } from "lucide-react";
 import fpgaImg from "@/assets/unsplash-fpga.jpg";
 import chipImg from "@/assets/unsplash-chip.jpg";
 
@@ -40,7 +38,7 @@ const BentoGrid = () => {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `linear-gradient(160deg, hsl(var(--background)) 55%, hsl(var(--arc-yellow) / 0.10) 55%)`,
+          background: `linear-gradient(160deg, hsl(var(--background)) 50%, hsl(var(--arc-yellow) / 0.20) 50%)`,
         }}
       />
       <div className="max-w-6xl mx-auto">
@@ -63,16 +61,13 @@ const BentoGrid = () => {
             }
             transition={springTransition}
           >
-            <div className="w-12 h-12 rounded-xl bg-arc-blue/10 flex items-center justify-center mb-6">
-              <Cpu className="w-6 h-6 text-arc-blue" />
-            </div>
+            <img src={fpgaImg} alt="FPGA board" className="w-full h-44 object-cover rounded-xl mb-6" loading="lazy" />
             <h3 className="font-display text-2xl font-bold text-foreground mb-2">VX-1 Soft Core</h3>
             <p className="text-sm font-semibold text-arc-blue mb-3">500 MHz · FPGA-Optimized</p>
-            <p className="text-muted-foreground leading-relaxed mb-4">
+            <p className="text-muted-foreground leading-relaxed">
               Optimized for Xilinx UltraScale+ FPGAs. Rapid prototyping with production-grade
               deterministic JSON scanning at sub-microsecond latencies.
             </p>
-            <img src={fpgaImg} alt="FPGA development board" className="w-full h-32 object-cover rounded-xl opacity-80" loading="lazy" />
           </motion.div>
 
           {/* VX-1 Hard Core */}
@@ -89,16 +84,13 @@ const BentoGrid = () => {
             }
             transition={{ ...springTransition, delay: 0.1 }}
           >
-            <div className="w-12 h-12 rounded-xl bg-arc-red/10 flex items-center justify-center mb-6">
-              <Zap className="w-6 h-6 text-arc-red" />
-            </div>
+            <img src={chipImg} alt="Microchip" className="w-full h-44 object-cover rounded-xl mb-6" loading="lazy" />
             <h3 className="font-display text-2xl font-bold text-foreground mb-2">VX-1 Hard Core</h3>
             <p className="text-sm font-semibold text-arc-red mb-3">1.0 GHz+ · ASIC-Ready</p>
-            <p className="text-muted-foreground leading-relaxed mb-4">
+            <p className="text-muted-foreground leading-relaxed">
               Fully synthesizable RTL targeting TSMC 16nm & 7nm FinFET. Silicon-proven performance
               with zero-jitter deterministic processing.
             </p>
-            <img src={chipImg} alt="Microchip close-up" className="w-full h-32 object-cover rounded-xl opacity-80" loading="lazy" />
           </motion.div>
 
           {/* Stats card */}
