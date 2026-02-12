@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Cpu, Zap } from "lucide-react";
+import fpgaImg from "@/assets/unsplash-fpga.jpg";
+import chipImg from "@/assets/unsplash-chip.jpg";
 
 function AnimatedCounter({
   target,
@@ -33,7 +35,14 @@ const BentoGrid = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section id="products" className="py-32 px-6 bg-muted/30" ref={ref}>
+    <section id="products" className="relative py-32 px-6 overflow-hidden" ref={ref}>
+      {/* Diagonal yellow-to-white */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `linear-gradient(160deg, hsl(var(--background)) 55%, hsl(var(--arc-yellow) / 0.10) 55%)`,
+        }}
+      />
       <div className="max-w-6xl mx-auto">
         <h2 className="font-display text-3xl md:text-5xl font-extrabold text-center text-foreground mb-4">
           Product Lineup
@@ -59,10 +68,11 @@ const BentoGrid = () => {
             </div>
             <h3 className="font-display text-2xl font-bold text-foreground mb-2">VX-1 Soft Core</h3>
             <p className="text-sm font-semibold text-arc-blue mb-3">500 MHz · FPGA-Optimized</p>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed mb-4">
               Optimized for Xilinx UltraScale+ FPGAs. Rapid prototyping with production-grade
               deterministic JSON scanning at sub-microsecond latencies.
             </p>
+            <img src={fpgaImg} alt="FPGA development board" className="w-full h-32 object-cover rounded-xl opacity-80" loading="lazy" />
           </motion.div>
 
           {/* VX-1 Hard Core */}
@@ -84,10 +94,11 @@ const BentoGrid = () => {
             </div>
             <h3 className="font-display text-2xl font-bold text-foreground mb-2">VX-1 Hard Core</h3>
             <p className="text-sm font-semibold text-arc-red mb-3">1.0 GHz+ · ASIC-Ready</p>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed mb-4">
               Fully synthesizable RTL targeting TSMC 16nm & 7nm FinFET. Silicon-proven performance
               with zero-jitter deterministic processing.
             </p>
+            <img src={chipImg} alt="Microchip close-up" className="w-full h-32 object-cover rounded-xl opacity-80" loading="lazy" />
           </motion.div>
 
           {/* Stats card */}
