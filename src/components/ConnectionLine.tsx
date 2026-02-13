@@ -21,10 +21,10 @@ const ConnectionLine = ({ color = "hsl(var(--arc-red))", height = 120 }: Connect
     <div ref={ref} className="flex justify-center py-4">
       <motion.div
         style={{
-          width: 10,
+          width: 50,
           height,
           backgroundColor: color,
-          borderRadius: 5,
+          borderRadius: 25,
           transformOrigin: "top",
           scaleY: progress,
         }}

@@ -5,18 +5,24 @@ import ScrollFillText from "./ScrollFillText";
 
 const HeroSection = () => {
   const velocity = useScrollVelocity();
-  // Logo rotation speed reacts to scroll velocity
   const rotateSpeed = useSpring(velocity * 360, { stiffness: 80, damping: 20 });
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-16 overflow-hidden">
-      {/* Multi-color diagonal gradient background */}
+      {/* Multi-color gradient diagonal — same style as gradient-border buttons */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `linear-gradient(155deg, hsl(var(--background)) 45%, hsl(var(--arc-blue) / 0.12) 45%, hsl(var(--arc-blue) / 0.12) 50%, hsl(var(--arc-red) / 0.10) 50%, hsl(var(--arc-red) / 0.10) 55%, hsl(var(--arc-yellow) / 0.10) 55%, hsl(var(--arc-yellow) / 0.10) 60%, hsl(var(--arc-green) / 0.10) 60%)`,
+          background: `linear-gradient(155deg, hsl(var(--background)) 45%, transparent 45%)`,
         }}
       />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `linear-gradient(155deg, transparent 44%, hsl(217 89% 61% / 0.25) 44%, hsl(4 90% 58% / 0.22) 52%, hsl(43 97% 50% / 0.20) 60%, hsl(142 53% 43% / 0.18) 68%, transparent 80%)`,
+        }}
+      />
+
       {/* Gradient orbs */}
       <div className="absolute top-20 left-1/4 w-96 h-96 bg-arc-blue/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-arc-red/15 rounded-full blur-3xl pointer-events-none" />
@@ -25,7 +31,7 @@ const HeroSection = () => {
       <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto">
         <motion.img
           src={logo3D}
-          alt="ARC Silicon 3D Logo"
+          alt="ASC 3D Logo"
           className="w-40 h-40 md:w-56 md:h-56 object-contain mb-10 drop-shadow-2xl"
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -38,7 +44,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 60, damping: 18, delay: 0.15 }}
         >
-          ARC Silicon
+          ASC — Advanced Silicon Cores
         </motion.h2>
 
         <motion.div
@@ -64,7 +70,6 @@ const HeroSection = () => {
           <span className="font-semibold text-foreground">1.0 GHz</span> for 16nm and 7nm ASIC targets.
         </motion.p>
 
-        {/* Founder's signature */}
         <motion.p
           className="mt-4 font-signature text-2xl text-muted-foreground/60"
           initial={{ opacity: 0 }}
@@ -81,7 +86,7 @@ const HeroSection = () => {
           transition={{ type: "spring", stiffness: 60, damping: 18, delay: 0.6 }}
         >
           <a
-            href="#products"
+            href="/products"
             className="inline-flex h-12 px-8 items-center rounded-full text-sm font-bold text-primary-foreground gradient-border transition-transform hover:scale-105 shadow-lg"
           >
             Explore Products
@@ -95,7 +100,7 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Scroll indicator - subtle arrow only */}
+      {/* Subtle scroll arrow — no blue scroll indicator */}
       <motion.div
         className="absolute bottom-8 flex flex-col items-center gap-2 text-muted-foreground/40"
         animate={{ y: [0, 10, 0] }}

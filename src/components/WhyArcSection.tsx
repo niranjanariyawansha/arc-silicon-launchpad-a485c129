@@ -44,7 +44,7 @@ const WhyArcSection = () => {
 
       <div className="relative z-10 max-w-6xl mx-auto">
         <h2 className="font-display text-3xl md:text-5xl font-extrabold text-center text-foreground mb-4">
-          Why ARC Silicon
+          Why ASC
         </h2>
         <p className="text-center text-muted-foreground mb-6 text-lg">
           The unfair advantage in silicon-speed data processing.
