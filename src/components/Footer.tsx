@@ -6,10 +6,10 @@ const Footer = () => {
 
       <div className="max-w-4xl mx-auto text-center">
         <p className="font-display text-lg font-semibold text-foreground mb-2">
-          ARC Silicon (Pvt) Ltd.
+          ASC — Advanced Silicon Cores (Pvt) Ltd.
         </p>
         <p className="text-muted-foreground text-sm mb-6">
-          Advanced Runtime Cores · Built for the 10Gbps Era
+          Advanced Silicon Cores · Built for the 10Gbps Era
         </p>
         <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
           <a href="#products" className="hover:text-foreground transition-colors">Products</a>
@@ -17,7 +17,7 @@ const Footer = () => {
           <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
         </div>
         <p className="mt-8 text-xs text-muted-foreground">
-          © {new Date().getFullYear()} ARC Silicon (Pvt) Ltd. All rights reserved.
+          © {new Date().getFullYear()} ASC — Advanced Silicon Cores (Pvt) Ltd. All rights reserved.
         </p>
       </div>
     </footer>

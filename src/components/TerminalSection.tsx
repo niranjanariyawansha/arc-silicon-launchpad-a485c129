@@ -67,7 +67,7 @@ const TerminalSection = () => {
             <div className="w-3 h-3 rounded-full bg-arc-yellow" />
             <div className="w-3 h-3 rounded-full bg-arc-green" />
             <span className="ml-3 text-xs text-muted-foreground font-mono">
-              arc-silicon-sim — verification.log
+              asc-sim — verification.log
             </span>
           </div>
 

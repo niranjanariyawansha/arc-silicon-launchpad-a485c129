@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ConnectionLine from "@/components/ConnectionLine";
+import HowWeDoItSection from "@/components/HowWeDoItSection";
 import TerminalSection from "@/components/TerminalSection";
 import BentoGrid from "@/components/BentoGrid";
 import ImageCarousel from "@/components/ImageCarousel";
@@ -13,12 +14,14 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <ConnectionLine color="hsl(var(--arc-red))" height={120} />
-      <TerminalSection />
+      <HowWeDoItSection />
       <ConnectionLine color="hsl(var(--arc-blue))" height={100} />
-      <BentoGrid />
+      <TerminalSection />
       <ConnectionLine color="hsl(var(--arc-yellow))" height={100} />
-      <ImageCarousel />
+      <BentoGrid />
       <ConnectionLine color="hsl(var(--arc-green))" height={100} />
+      <ImageCarousel />
+      <ConnectionLine color="hsl(var(--arc-red))" height={100} />
       <WhyArcSection />
       <Footer />
     </div>
