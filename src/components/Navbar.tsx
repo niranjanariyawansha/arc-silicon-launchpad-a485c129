@@ -87,7 +87,7 @@ const Navbar = () => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 80, opacity: 0 }}
             transition={{ type: "spring", stiffness: 200, damping: 24 }}
-            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 backdrop-blur-xl bg-background/90 border border-border/60 rounded-2xl shadow-2xl px-6 py-3"
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 backdrop-blur-xl bg-background/90 border border-border/60 rounded-2xl shadow-2xl px-6 py-3 mx-auto"
           >
             <div className="flex items-center gap-6">
               <button onClick={handleLogoClick} className="flex items-center gap-2 cursor-pointer">
