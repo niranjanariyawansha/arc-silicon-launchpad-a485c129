@@ -12,3 +12,9 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+User-agent: *
+Allow: /
+
+# The link below tells Google exactly where to find your map
+Sitemap: https://asc-cores.com/sitemap.xml
