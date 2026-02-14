@@ -8,7 +8,7 @@ const Benchmarks = () => {
         <div className="min-h-screen bg-background text-foreground">
             <Navbar />
 
-            <section className="pt-32 pb-20 px-6">
+            <section className="pt-24 pb-16 md:pt-32 md:pb-20 px-6">
                 <div className="max-w-4xl mx-auto text-center">
                     <motion.h1
                         className="font-display text-4xl md:text-5xl font-bold mb-6"

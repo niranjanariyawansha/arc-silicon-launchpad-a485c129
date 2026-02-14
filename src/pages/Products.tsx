@@ -77,7 +77,7 @@ const Products = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
+      <section className="relative pt-24 pb-16 md:pt-32 md:pb-20 px-6 overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{

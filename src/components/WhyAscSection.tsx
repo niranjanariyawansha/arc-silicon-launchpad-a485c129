@@ -31,7 +31,7 @@ const WhyAscSection = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section className="relative py-32 px-6 overflow-hidden" ref={ref}>
+    <section className="relative py-20 md:py-32 px-6 overflow-hidden" ref={ref}>
       {/* Diagonal split background — 15° amber bottom */}
       {!isMobile && (
         <div
@@ -65,10 +65,10 @@ const WhyAscSection = () => {
                 isMobile
                   ? {}
                   : {
-                      opacity: Math.min(1, progress * (3 - i * 0.3)),
-                      y: 50 * (1 - Math.min(1, progress * (3 - i * 0.3))),
-                      scale: 0.95 + 0.05 * Math.min(1, progress * (3 - i * 0.3)),
-                    }
+                    opacity: Math.min(1, progress * (3 - i * 0.3)),
+                    y: 50 * (1 - Math.min(1, progress * (3 - i * 0.3))),
+                    scale: 0.95 + 0.05 * Math.min(1, progress * (3 - i * 0.3)),
+                  }
               }
               transition={{
                 type: "spring",

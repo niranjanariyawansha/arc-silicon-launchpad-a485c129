@@ -39,7 +39,7 @@ const HeroSection = () => {
         />
 
         <motion.h1
-          className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-wide text-arc-blue mb-4"
+          className="font-display text-[clamp(2.5rem,5vw,5rem)] leading-none font-bold tracking-wide text-arc-blue mb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 60, damping: 18, delay: 0.15 }}
@@ -54,14 +54,14 @@ const HeroSection = () => {
         >
           <ScrollFillText
             as="h2"
-            className="font-display text-5xl md:text-7xl font-extrabold tracking-tight leading-tight"
+            className="font-display text-[clamp(2rem,6vw,4.5rem)] font-extrabold tracking-tight leading-tight"
           >
             The Deterministic Standard.
           </ScrollFillText>
         </motion.div>
 
         <motion.p
-          className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed"
+          className="mt-8 text-base md:text-xl text-muted-foreground max-w-2xl leading-relaxed px-4"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 60, damping: 18, delay: 0.4 }}
