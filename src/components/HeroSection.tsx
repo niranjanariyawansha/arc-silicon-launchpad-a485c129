@@ -38,14 +38,14 @@ const HeroSection = () => {
           style={{ rotate: rotateSpeed }}
         />
 
-        <motion.h2
+        <motion.h1
           className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-wide text-arc-blue mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 60, damping: 18, delay: 0.15 }}
         >
           ASC — Advanced Silicon Cores
-        </motion.h2>
+        </motion.h1>
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -53,7 +53,7 @@ const HeroSection = () => {
           transition={{ type: "spring", stiffness: 60, damping: 18, delay: 0.2 }}
         >
           <ScrollFillText
-            as="h1"
+            as="h2"
             className="font-display text-5xl md:text-7xl font-extrabold tracking-tight leading-tight"
           >
             The Deterministic Standard.
@@ -66,7 +66,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 60, damping: 18, delay: 0.4 }}
         >
-          Architecting the world's fastest JSON structural scanners. Verified at{" "}
+          <strong className="text-foreground">Advanced Silicon Cores (ASC)</strong> is architecting the world's fastest JSON structural scanners. Verified at{" "}
           <span className="font-semibold text-foreground">1.0 GHz</span> for 16nm and 7nm ASIC targets.
         </motion.p>
 

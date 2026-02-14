@@ -5,7 +5,7 @@ import HowWeDoItSection from "@/components/HowWeDoItSection";
 import TerminalSection from "@/components/TerminalSection";
 import BentoGrid from "@/components/BentoGrid";
 import ImageCarousel from "@/components/ImageCarousel";
-import WhyArcSection from "@/components/WhyArcSection";
+import WhyAscSection from "@/components/WhyAscSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -22,7 +22,7 @@ const Index = () => {
       <ConnectionLine color="hsl(var(--arc-green))" height={100} />
       <ImageCarousel />
       <ConnectionLine color="hsl(var(--arc-red))" height={100} />
-      <WhyArcSection />
+      <WhyAscSection />
       <Footer />
     </div>
   );

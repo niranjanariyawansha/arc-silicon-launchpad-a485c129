@@ -1,20 +1,3 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
 User-agent: *
 Allow: /
-
-User-agent: *
-Allow: /
-
-# The link below tells Google exactly where to find your map
 Sitemap: https://asc-cores.com/sitemap.xml

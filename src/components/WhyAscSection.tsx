@@ -26,7 +26,7 @@ const pillars = [
   },
 ];
 
-const WhyArcSection = () => {
+const WhyAscSection = () => {
   const { ref, progress } = useScrollProgress(0.15);
   const isMobile = useIsMobile();
 
@@ -95,4 +95,4 @@ const WhyArcSection = () => {
   );
 };
 
-export default WhyArcSection;
+export default WhyAscSection;
