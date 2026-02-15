@@ -1,3 +1,23 @@
 User-agent: *
 Allow: /
 Sitemap: https://asc-cores.com/sitemap.xml
+
+
+# ASC (Advanced Silicon Cores) Robots File
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+
+# Specifically invite Googlebot to crawl frequently
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Specifically invite Bingbot
+User-agent: bingbot
+Allow: /
+
+# Link to the Sitemap
+Sitemap: https://asc-cores.com/sitemap.xml
