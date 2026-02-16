@@ -7,26 +7,20 @@ interface ConnectionLineProps {
   height?: number;
 }
 
-/**
- * A vertical line that "draws" itself downward based on scroll progress.
- * Connects narrative sections visually.
- */
 const ConnectionLine = ({ color = "hsl(var(--arc-red))", height = 120 }: ConnectionLineProps) => {
   const { ref, progress } = useScrollProgress(0.3);
   const isMobile = useIsMobile();
 
-  if (isMobile) return null;
-
   return (
-    <div ref={ref} className="flex justify-center py-4">
+    <div ref={ref} className="flex justify-center py-2 md:py-4">
       <motion.div
         style={{
-          width: 50,
-          height,
+          width: isMobile ? 6 : 50,
+          height: isMobile ? Math.min(height, 60) : height,
           backgroundColor: color,
-          borderRadius: 25,
+          borderRadius: isMobile ? 3 : 25,
           transformOrigin: "top",
-          scaleY: progress,
+          scaleY: isMobile ? 1 : progress,
         }}
         transition={{ type: "spring", stiffness: 100 }}
       />

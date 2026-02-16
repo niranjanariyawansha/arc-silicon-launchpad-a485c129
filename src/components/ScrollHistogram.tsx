@@ -19,17 +19,17 @@ const ScrollHistogram = () => {
   const isMobile = useIsMobile();
 
   return (
-    <div ref={ref} className="w-full max-w-md mx-auto mt-8">
-      <p className="text-xs text-muted-foreground text-center mb-3 font-mono uppercase tracking-widest">
+    <div ref={ref} className="w-full max-w-md mx-auto mt-6 md:mt-8 px-4">
+      <p className="text-[10px] sm:text-xs text-muted-foreground text-center mb-3 font-mono uppercase tracking-widest">
         Latency Distribution (ns)
       </p>
-      <div className="flex items-end justify-center gap-3 h-40">
+      <div className="flex items-end justify-center gap-2 sm:gap-3 h-28 sm:h-40">
         {bars.map((bar, i) => {
           const barProgress = isMobile ? 1 : progress;
           return (
             <div key={bar.label} className="flex flex-col items-center gap-1">
-              <motion.div
-                className="w-10 rounded-t-md"
+                <motion.div
+                className="w-7 sm:w-10 rounded-t-md"
                 style={{
                   backgroundColor: bar.color,
                   height: `${bar.height * barProgress}%`,

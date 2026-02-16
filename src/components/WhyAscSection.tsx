@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { useIsMobile } from "@/hooks/use-mobile";
 import circuitImg from "@/assets/unsplash-circuit.jpg";
 import serverImg from "@/assets/unsplash-server.jpg";
@@ -27,12 +26,10 @@ const pillars = [
 ];
 
 const WhyAscSection = () => {
-  const { ref, progress } = useScrollProgress(0.15);
   const isMobile = useIsMobile();
 
   return (
-    <section className="relative py-20 md:py-32 px-6 overflow-hidden" ref={ref}>
-      {/* Diagonal split background — 15° amber bottom */}
+    <section className="relative py-16 md:py-32 px-4 sm:px-6 overflow-hidden">
       {!isMobile && (
         <div
           className="absolute inset-0 pointer-events-none"
@@ -43,33 +40,24 @@ const WhyAscSection = () => {
       )}
 
       <div className="relative z-10 max-w-6xl mx-auto">
-        <h2 className="font-display text-3xl md:text-5xl font-extrabold text-center text-foreground mb-4">
+        <h2 className="font-display text-2xl sm:text-3xl md:text-5xl font-extrabold text-center text-foreground mb-4">
           Why ASC
         </h2>
-        <p className="text-center text-muted-foreground mb-6 text-lg">
+        <p className="text-center text-muted-foreground mb-4 md:mb-6 text-base md:text-lg px-2">
           The unfair advantage in silicon-speed data processing.
         </p>
-
-        {/* Decorative signature */}
-        <p className="text-center font-signature text-xl text-muted-foreground/50 mb-16">
+        <p className="text-center font-signature text-lg md:text-xl text-muted-foreground/50 mb-10 md:mb-16">
           — 30 years of wisdom, 1 GHz of future
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {pillars.map((p, i) => (
             <motion.div
               key={p.title}
               className="text-center flex flex-col items-center"
-              initial={isMobile ? {} : { opacity: 0, y: 50, scale: 0.95 }}
-              animate={
-                isMobile
-                  ? {}
-                  : {
-                    opacity: Math.min(1, progress * (3 - i * 0.3)),
-                    y: 50 * (1 - Math.min(1, progress * (3 - i * 0.3))),
-                    scale: 0.95 + 0.05 * Math.min(1, progress * (3 - i * 0.3)),
-                  }
-              }
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{
                 type: "spring",
                 stiffness: 100,
@@ -77,7 +65,7 @@ const WhyAscSection = () => {
                 delay: i * 0.1,
               }}
             >
-              <div className="w-full h-40 rounded-2xl overflow-hidden mb-6">
+              <div className="w-full h-32 sm:h-40 rounded-2xl overflow-hidden mb-4 sm:mb-6">
                 <img
                   src={p.image}
                   alt={p.title}
@@ -85,8 +73,8 @@ const WhyAscSection = () => {
                   loading="lazy"
                 />
               </div>
-              <h3 className="font-display text-xl font-bold text-foreground mb-3">{p.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{p.description}</p>
+              <h3 className="font-display text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3">{p.title}</h3>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{p.description}</p>
             </motion.div>
           ))}
         </div>
