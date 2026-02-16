@@ -47,18 +47,6 @@ const HeroSection = () => {
           ASC — Advanced Silicon Cores
         </motion.h1>
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 60, damping: 18, delay: 0.2 }}
-        >
-          <ScrollFillText
-            as="h2"
-            className="font-display text-[clamp(2rem,6vw,4.5rem)] font-extrabold tracking-tight leading-tight"
-          >
-            The Deterministic Standard.
-          </ScrollFillText>
-        </motion.div>
 
         <motion.p
           className="mt-6 font-signature text-3xl md:text-4xl text-muted-foreground/60"
