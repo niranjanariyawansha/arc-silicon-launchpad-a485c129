@@ -61,16 +61,6 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.p
-          className="mt-8 text-base md:text-xl text-muted-foreground max-w-2xl leading-relaxed px-4"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 60, damping: 18, delay: 0.4 }}
-        >
-          <strong className="text-foreground">Advanced Silicon Cores (ASC)</strong> is architecting the world's fastest JSON structural scanners. Verified at{" "}
-          <span className="font-semibold text-foreground">1.0 GHz</span> for 16nm and 7nm ASIC targets.
-        </motion.p>
-
-        <motion.p
           className="mt-6 font-signature text-3xl md:text-4xl text-muted-foreground/60"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
