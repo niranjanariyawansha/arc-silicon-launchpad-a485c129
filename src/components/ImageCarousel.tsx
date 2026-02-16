@@ -34,7 +34,6 @@ const ImageCarousel = () => {
     return () => { emblaApi.off("select", onSelect); };
   }, [emblaApi]);
 
-  // Auto-play
   useEffect(() => {
     if (!emblaApi) return;
     const interval = setInterval(() => emblaApi.scrollNext(), 4000);
@@ -42,8 +41,7 @@ const ImageCarousel = () => {
   }, [emblaApi]);
 
   return (
-    <section className="relative py-24 px-6 overflow-hidden">
-      {/* Diagonal blue-to-white background */}
+    <section className="relative py-16 md:py-24 px-4 sm:px-6 overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -52,10 +50,10 @@ const ImageCarousel = () => {
       />
 
       <div className="relative z-10 max-w-6xl mx-auto">
-        <h2 className="font-display text-3xl md:text-5xl font-extrabold text-center text-foreground mb-4">
+        <h2 className="font-display text-2xl sm:text-3xl md:text-5xl font-extrabold text-center text-foreground mb-4">
           Silicon in Action
         </h2>
-        <p className="text-center text-muted-foreground mb-12 text-lg">
+        <p className="text-center text-muted-foreground mb-8 md:mb-12 text-base md:text-lg px-2">
           From wafer to production — real hardware, real results.
         </p>
 
@@ -63,7 +61,7 @@ const ImageCarousel = () => {
           <div ref={emblaRef} className="overflow-hidden rounded-2xl">
             <div className="flex">
               {slides.map((slide, i) => (
-                <div key={i} className="flex-[0_0_100%] min-w-0 md:flex-[0_0_60%] px-3">
+                <div key={i} className="flex-[0_0_100%] min-w-0 md:flex-[0_0_60%] px-2 sm:px-3">
                   <motion.div
                     className="relative rounded-2xl overflow-hidden aspect-[16/9] shadow-2xl"
                     animate={{
@@ -79,7 +77,7 @@ const ImageCarousel = () => {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
-                    <p className="absolute bottom-4 left-4 right-4 font-display text-lg font-bold text-primary-foreground drop-shadow-lg">
+                    <p className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 font-display text-sm sm:text-lg font-bold text-primary-foreground drop-shadow-lg">
                       {slide.caption}
                     </p>
                   </motion.div>
@@ -91,28 +89,28 @@ const ImageCarousel = () => {
           {/* Navigation buttons */}
           <button
             onClick={scrollPrev}
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-background/80 backdrop-blur border border-border flex items-center justify-center hover:bg-muted transition-colors shadow-lg"
+            className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-background/80 backdrop-blur border border-border flex items-center justify-center hover:bg-muted transition-colors shadow-lg"
             aria-label="Previous slide"
           >
-            <ChevronLeft className="w-5 h-5 text-foreground" />
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-foreground" />
           </button>
           <button
             onClick={scrollNext}
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-background/80 backdrop-blur border border-border flex items-center justify-center hover:bg-muted transition-colors shadow-lg"
+            className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-background/80 backdrop-blur border border-border flex items-center justify-center hover:bg-muted transition-colors shadow-lg"
             aria-label="Next slide"
           >
-            <ChevronRight className="w-5 h-5 text-foreground" />
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-foreground" />
           </button>
         </div>
 
         {/* Dots */}
-        <div className="flex justify-center gap-2 mt-6">
+        <div className="flex justify-center gap-1.5 sm:gap-2 mt-4 sm:mt-6">
           {slides.map((_, i) => (
             <button
               key={i}
-              className={`w-2.5 h-2.5 rounded-full transition-all ${
+              className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all ${
                 selectedIndex === i
-                  ? "bg-arc-blue w-6"
+                  ? "bg-arc-blue w-5 sm:w-6"
                   : "bg-muted-foreground/30"
               }`}
               onClick={() => emblaApi?.scrollTo(i)}

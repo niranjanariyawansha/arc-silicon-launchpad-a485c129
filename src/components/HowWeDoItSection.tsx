@@ -34,7 +34,7 @@ const HowWeDoItSection = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section id="technology" className="relative py-32 px-6 overflow-hidden" ref={ref}>
+    <section id="technology" className="relative py-16 md:py-32 px-4 sm:px-6 overflow-hidden" ref={ref}>
       {/* Diagonal background */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -45,22 +45,22 @@ const HowWeDoItSection = () => {
 
       <div className="relative z-10 max-w-5xl mx-auto">
         <motion.h2
-          className="font-display text-3xl md:text-5xl font-extrabold text-center text-foreground mb-3"
+          className="font-display text-2xl sm:text-3xl md:text-5xl font-extrabold text-center text-foreground mb-3"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
           How We Do It
         </motion.h2>
-        <p className="text-center text-muted-foreground mb-6 text-lg">
+        <p className="text-center text-muted-foreground mb-4 md:mb-6 text-base md:text-lg px-2">
           Three stages. One clock cycle each. Zero compromise.
         </p>
-        <p className="text-center font-signature text-2xl text-muted-foreground/50 mb-16">
+        <p className="text-center font-signature text-xl md:text-2xl text-muted-foreground/50 mb-10 md:mb-16">
           — Precision in Every Cycle
         </p>
 
         <div className="relative">
-          {/* Vertical scroll-telling gradient line */}
+          {/* Vertical scroll-telling gradient line — desktop only */}
           {!isMobile && (
             <motion.div
               className="absolute left-8 top-0 bottom-0 w-[50px] rounded-full"
@@ -72,9 +72,9 @@ const HowWeDoItSection = () => {
             />
           )}
 
-          <div className="flex flex-col gap-24">
+          <div className="flex flex-col gap-12 md:gap-24">
             {steps.map((step, i) => {
-              const stepProgress = Math.min(1, Math.max(0, (progress * 3) - i));
+              const stepProgress = isMobile ? 1 : Math.min(1, Math.max(0, (progress * 3) - i));
               const isActive = stepProgress > 0.1;
               const isFull = stepProgress >= 0.95;
 
@@ -82,18 +82,12 @@ const HowWeDoItSection = () => {
                 <motion.div
                   key={step.step}
                   className={`relative ${isMobile ? "pl-0" : "pl-28"}`}
-                  initial={isMobile ? {} : { opacity: 0, x: -30 }}
-                  animate={
-                    isMobile
-                      ? {}
-                      : {
-                          opacity: Math.min(1, stepProgress * 2),
-                          x: -30 * (1 - Math.min(1, stepProgress * 2)),
-                        }
-                  }
-                  transition={{ type: "spring", stiffness: 80, damping: 16 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ type: "spring", stiffness: 80, damping: 16, delay: i * 0.1 }}
                 >
-                  {/* Step number dot */}
+                  {/* Step number dot — desktop */}
                   {!isMobile && (
                     <motion.div
                       className="absolute left-3 top-4 w-[60px] h-[60px] rounded-full flex items-center justify-center font-display font-extrabold text-lg border-4 shadow-lg"
@@ -116,40 +110,48 @@ const HowWeDoItSection = () => {
                     </motion.div>
                   )}
 
+                  {/* Mobile step badge */}
+                  {isMobile && (
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-full gradient-border flex items-center justify-center font-display font-bold text-sm text-primary-foreground">
+                        {step.step}
+                      </div>
+                      <h3 className="font-display text-xl font-bold text-foreground">
+                        {step.title}
+                      </h3>
+                    </div>
+                  )}
+
                   <div className="glass rounded-2xl overflow-hidden border border-border/50 shadow-lg">
                     {/* Image banner */}
-                    <div className="h-40 md:h-48 overflow-hidden">
+                    <div className="h-32 sm:h-40 md:h-48 overflow-hidden">
                       <img
                         src={step.image}
                         alt={step.title}
                         className="w-full h-full object-cover"
+                        loading="lazy"
                       />
                     </div>
-                    <div className="p-8">
-                      <motion.h3
-                        className="font-display text-2xl md:text-3xl font-bold mb-3"
-                        animate={{
-                          color: isFull
-                            ? "hsl(var(--arc-green))"
-                            : isActive
-                            ? "hsl(var(--foreground))"
-                            : "hsl(var(--muted-foreground))",
-                        }}
-                        transition={{ duration: 0.4 }}
-                      >
-                        {step.title}
-                      </motion.h3>
-                      <motion.p
-                        className="leading-relaxed text-base md:text-lg"
-                        animate={{
-                          color: isActive
-                            ? "hsl(var(--muted-foreground))"
-                            : "hsl(var(--border))",
-                        }}
-                        transition={{ duration: 0.4 }}
-                      >
+                    <div className="p-5 sm:p-6 md:p-8">
+                      {/* Desktop title */}
+                      {!isMobile && (
+                        <motion.h3
+                          className="font-display text-2xl md:text-3xl font-bold mb-3"
+                          animate={{
+                            color: isFull
+                              ? "hsl(var(--arc-green))"
+                              : isActive
+                              ? "hsl(var(--foreground))"
+                              : "hsl(var(--muted-foreground))",
+                          }}
+                          transition={{ duration: 0.4 }}
+                        >
+                          {step.title}
+                        </motion.h3>
+                      )}
+                      <p className="leading-relaxed text-sm sm:text-base md:text-lg text-muted-foreground">
                         {step.description}
-                      </motion.p>
+                      </p>
                     </div>
                   </div>
                 </motion.div>
@@ -158,7 +160,7 @@ const HowWeDoItSection = () => {
           </div>
         </div>
 
-        <p className="text-center font-signature text-xl text-muted-foreground/40 mt-16">
+        <p className="text-center font-signature text-lg md:text-xl text-muted-foreground/40 mt-10 md:mt-16">
           — Every byte, accounted for
         </p>
       </div>
