@@ -15,6 +15,7 @@ export default {
     extend: {
       fontFamily: {
         display: ['"Inter"', '"SF Pro Display"', 'system-ui', 'sans-serif'],
+        heading: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
         body: ['"Inter"', '"SF Pro Text"', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', '"SF Mono"', 'monospace'],
         signature: ['"Mrs Saint Delafield"', 'cursive'],
@@ -96,6 +97,10 @@ export default {
           "0%, 100%": { boxShadow: "0 0 20px 0px hsl(var(--arc-blue) / 0.2)" },
           "50%": { boxShadow: "0 0 40px 10px hsl(var(--arc-blue) / 0.4)" },
         },
+        "pulse-dot": {
+          "0%, 100%": { opacity: "1", transform: "scale(1)" },
+          "50%": { opacity: "0.5", transform: "scale(1.5)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -103,6 +108,7 @@ export default {
         float: "float 6s ease-in-out infinite",
         "fade-up": "fade-up 0.8s ease-out forwards",
         "glow-pulse": "glow-pulse 3s ease-in-out infinite",
+        "pulse-dot": "pulse-dot 2s ease-in-out infinite",
       },
     },
   },
